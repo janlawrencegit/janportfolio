@@ -21,10 +21,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-medium">
-                    <li class="nav-item"><a class="nav-link text-dark" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contact</a></li>
+                    @if(!empty($navbar) && $navbar->count())
+                        @foreach ($navbar as $navItem)
+                            <li class="nav-item">
+                                <a class="nav-link" href="#{{ $navItem->section }}">
+                                    {{ $navItem->navtitle }}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>
